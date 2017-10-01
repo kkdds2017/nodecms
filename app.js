@@ -10,9 +10,9 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-//远程数据库
+//远程数据库;
 mongoose.connect('mongodb://root:UIrbWa9cvF3PK3gSI4qjbhZhU52zeUDSuQI4Oc73@ermkmolebuhn.mongodb.sae.sina.com.cn:10479',{useMongoClient: true});
-//本地数据库
+//本地数据库;
 //mongoose.connect('mongodb://127.0.0.1:27017/test',{useMongoClient: true});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
