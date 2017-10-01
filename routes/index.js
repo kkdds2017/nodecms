@@ -8,22 +8,23 @@ router.get('/', function(req, res, next) {
 });
 //reg 注册信息处理逻辑
 
-router.post('/reg', function(req, res, next) {
-	  var b = req.body;
+router.get('/reg', function(req, res, next) {
+	  var b = req.query;
 	  var _user={
 	    username: b.username,
 	    password: b.password
 	  }
+//	  res.send(_user);
 	  var user=new User(_user);
 	  user.save(function(err,user){
 	  if (err) {
 	  console.log(err);
 	  return;
 	  }
-	  console.log('注册成功');
-	  res.send('注册成功');
-	  res.location('/');
-	  })
+//	  console.log('注册成功');
+//	  res.send('注册成功');
+	  });
+	  res.redirect('/');
 	});
 
 module.exports = router;

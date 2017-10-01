@@ -5,43 +5,12 @@
     <title>Nojs轻量级cms中文网</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 <script src="/js/form-valid.js"></script>
-<script type="text/javascript">
-$.validator.setDefaults({
-		submitHandler: function() {
-			alert("submitted!");
-		}
-	});
-$(function(){
-	//表单验证开始；
-	$('#regForm').validate({
-		debug:true,//开启调试模式
-		rules:{
-			name:{
-				required:true,
-				rangelength:[6,12]
-			}
-	        password:{
-	        	required:true,
-				rangelength:[6,12]
-	        }
-	        password2:{
-	        	required:true,
-				equalTo:'#password2'
-	        }
-		},
-		messages:{
-		name:{
-		required:"请输入用户名",
-		}
-		}
-	});
-});
-
-</script>
-  </head>
+  
+ </head>
   <body>
   <!--
  这个导航我其实不喜欢，但是没办法，项目组长的媳妇喜欢|fuck
@@ -83,50 +52,25 @@ $(function(){
  <h3 class="panel-title">用户注册</h3>
 </div>
  <div class="panel-body">
-<form role="form" id="regForm" method="post" action="reg">
+<form role="form" id="regForm" method="get" action="/reg">
+<fieldset>
   <div class="form-group">
     <label for="name">用户名称</label>
-    <input type="text" class="form-control" name="name" id="name" placeholder="请输入注册用户名">
+    <input type="text" class="form-control" name="username" id="username" placeholder="请输入注册用户名" required>
   </div>
    <div class="form-group">
     <label for="name">密码</label>
-    <input type="password" class="form-control" name="password" id="password" placeholder="请输入用户密码">
+    <input type="password" class="form-control" name="password" id="password" placeholder="请输入用户密码" required>
   </div>
   <div class="form-group">
     <label for="name">确认密码</label>
-    <input type="password" class="form-control" name="password2" id="password2" placeholder="请输入用户密码">
+    <input type="password" class="form-control" name="password2" id="password2" placeholder="请输入用户密码" required>
   </div>
-  <button type="submit" class="btn btn-info">注册用户</button>
+    <button type="submit" class="submit btn btn-info">注册用户</button>
     <button type="reset" class="btn btn-info">清除信息</button>
+ </fieldset>   
 </form> 
 <body>
-<h1 id="banner"><a href="https://jqueryvalidation.org/">jQuery Validation Plugin</a> Demo</h1>
-<div id="main">
-<p>Default submitHandler is set to display an alert into of submitting the form</p>
-<form class="cmxform" id="commentForm" method="get" action="">
-<fieldset>
-<legend>Please provide your name, email address (won't be published) and a comment</legend>
-<p>
-<label for="cname">Name (required, at least 2 characters)</label>
-<input id="cname" name="name" minlength="2" type="text" required>
-</p>
-<p>
-<label for="cemail">E-Mail (required)</label>
-<input id="cemail" type="email" name="email" required>
-</p>
-<p>
-<label for="curl">URL (optional)</label>
-<input id="curl" type="url" name="url">
-</p>
-<p>
-<label for="ccomment">Your comment (required)</label>
-<textarea id="ccomment" name="comment" required></textarea>
-</p>
-<p>
-<input class="submit" type="submit" value="Submit">
-</p>
-</fieldset>
-</form>
 </div>
 </div>
 <!--居中对其-->
