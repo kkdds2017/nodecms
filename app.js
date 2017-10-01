@@ -11,7 +11,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/test?poolSize=40');
+mongoose.connect('mongodb://root:UIrbWa9cvF3PK3gSI4qjbhZhU52zeUDSuQI4Oc73@ermkmolebuhn.mongodb.sae.sina.com.cn:10479,lioswkgirsvj.mongodb.sae.sina.com.cn:10479');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
