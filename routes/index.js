@@ -22,6 +22,7 @@ router.post('/reg', function(req, res, next) {
 	  }
 	  console.log('注册成功');
 	  res.send('注册成功');
+	  res.location('/')
 	  })
 	});
 
