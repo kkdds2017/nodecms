@@ -8,6 +8,7 @@ var mongoose = require('mongoose')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var User = require('./models/users');
 
 var app = express();
 mongoose.Promise = global.Promise;  
@@ -31,6 +32,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+//查询用户是否村子，注册验证
+app.get("/find", function(req, res, usr) {
+//    console.log("读取函数");
+	usr=req.query.username
+    User.findOne({username:usr}, function(err, docs) {
+        //console.log(docs);
+    	if(docs){
+            res.send("<font color=red>&#10006用户已注册，请换一个吧！</font>");
+    	}else{
+    		res.send("<font color=green>&#10003可以注册！</font>");
+    	}
+        /*对docs进行操作*/
+    });
+
+//    res.send("读取成功！！");
+
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

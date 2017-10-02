@@ -11,22 +11,34 @@
 <script src="/js/form-valid.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#username").blur(function(){
+	$("#username").change(function(){
 		var username=$(this).val();
 		if(username.length<=6){
 		$("#nametip").html("<font color=red >&#10006用户名应为数字字母组合且不少于6个字符！</font>");
-		$(this).focus();
+		//$(this).select();
 		}else{
-		$("#nametip").html("<font color=green >&#10003</font>");
+		var url="/find?username="+username;
+		//alert(url);
+		$.get(url,null,function(data){
+        if(data=="<font color=red>&#10006用户已注册，请换一个吧！</font>"){
+        $("#nametip").html(data);
+	    return false;
+        }else{
+        $("#nametip").html(data);
+        return true;
+        }
+		});
+		//
 		}
 		});
 	$("#password").blur(function(){
 		var pwd=$(this).val();
 		if(pwd.length<=5){
 		$("#pwdtip").html("<font color=red >&#10006密码建议为数字大写字母和小写字母组合且不少于5个字符！</font>");
-		$(this).focus();
+		return flase;
 		}else{
 		$("#pwdtip").html("<font color=green >&#10003</font>");
+		return true;
 		}
 		});
 	$("#password2").blur(function(){
@@ -34,9 +46,10 @@ $(document).ready(function(){
 	    var pwd2=$(this).val();
 	    if(pwd!=pwd2){
 	    $("#pwd2tip").html("<font color=red >&#10006两次密码不一致，请重新输入！</font>");
-		$(this).select();
+		return flase;
 		}else{
 		$("#pwd2tip").html("<font color=green >&#10003</font>");
+		return true;
 		}
 	});
 });
