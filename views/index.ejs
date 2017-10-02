@@ -11,7 +11,7 @@
 <script src="/js/form-valid.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#username").change(function(){
+	$("#username").blur(function(){
 		var username=$(this).val();
 		if(username.length<=6){
 		$("#nametip").html("<font color=red >&#10006用户名应为数字字母组合且不少于6个字符！</font>");
