@@ -1,6 +1,7 @@
 var express = require('express');
 var User = require('../models/users')
 var router = express.Router();
+var md5=require("md5");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,7 +13,7 @@ router.get('/reg', function(req, res, next) {
 	  var b = req.query;
 	  var _user={
 	    username: b.username,
-	    password: b.password
+	    password: md5(b.password)
 	  }
 //	  res.send(_user);
 	  var user=new User(_user);

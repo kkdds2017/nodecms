@@ -9,7 +9,51 @@
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 <script src="/js/form-valid.js"></script>
-  
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#username").blur(function(){
+		var username=$(this).val();
+		if(username.length<=6){
+		$("#nametip").html("<font color=red >&#10006用户名应为数字字母组合且不少于6个字符！</font>");
+		$(this).focus();
+		}else{
+		$("#nametip").html("<font color=green >&#10003</font>");
+		}
+		});
+	$("#password").blur(function(){
+		var pwd=$(this).val();
+		if(pwd.length<=5){
+		$("#pwdtip").html("<font color=red >&#10006密码建议为数字大写字母和小写字母组合且不少于5个字符！</font>");
+		$(this).focus();
+		}else{
+		$("#pwdtip").html("<font color=green >&#10003</font>");
+		}
+		});
+	$("#password2").blur(function(){
+	    var pwd=$("#password").val();
+	    var pwd2=$(this).val();
+	    if(pwd!=pwd2){
+	    $("#pwd2tip").html("<font color=red >&#10006两次密码不一致，请重新输入！</font>");
+		$(this).select();
+		}else{
+		$("#pwd2tip").html("<font color=green >&#10003</font>");
+		}
+	});
+});
+</script>
+<script src="https://cdn.bootcss.com/hideshowpassword/2.1.1/hideShowPassword.min.js"></script>
+<script>
+
+// Example 1
+$('#password').hideShowPassword({
+  // Creates a wrapper and toggle element with minimal styles.
+  innerToggle: true,
+  // Makes the toggle functional in touch browsers without
+  // the element losing focus.
+  touchSupport: Modernizr.touch
+});
+<!--password 可见-->
+</script>
  </head>
   <body>
   <!--
@@ -57,16 +101,19 @@
   <div class="form-group">
     <label for="name">用户名称</label>
     <input type="text" class="form-control" name="username" id="username" placeholder="请输入注册用户名" required>
+     <label for="name" id="nametip">*</label> 
   </div>
    <div class="form-group">
-    <label for="name">密码</label>
+    <label for="password">密码</label>
     <input type="password" class="form-control" name="password" id="password" placeholder="请输入用户密码" required>
+    <label for="password" id="pwdtip">*</label> 
   </div>
   <div class="form-group">
-    <label for="name">确认密码</label>
+    <label for="password2">确认密码</label>
     <input type="password" class="form-control" name="password2" id="password2" placeholder="请输入用户密码" required>
+    <label for="password2" id="pwd2tip">*</label>
   </div>
-    <button type="submit" class="submit btn btn-info">注册用户</button>
+    <button id="sub" type="submit" class="submit btn btn-info">注册用户</button>
     <button type="reset" class="btn btn-info">清除信息</button>
  </fieldset>   
 </form> 
