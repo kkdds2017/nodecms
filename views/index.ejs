@@ -15,20 +15,19 @@ $(document).ready(function(){
 		var username=$(this).val();
 		if(username.length<=6){
 		$("#nametip").html("<font color=red >&#10006用户名应为数字字母组合且不少于6个字符！</font>");
-		//$(this).select();
+		return false;
 		}else{
-		var url="/find?username="+username;
+		var username=$(this).val();
+        var url="/find?username="+username;
 		//alert(url);
 		$.get(url,null,function(data){
-        if(data=="<font color=red>&#10006用户已注册，请换一个吧！</font>"){
-        $("#nametip").html(data);
-	    return false;
-        }else{
-        $("#nametip").html(data);
-        return true;
-        }
+		if(data){
+		$("#nametip1").html(username);
+		$("#nametip2").html("<font color=red >&#10006这个已被注册了，换个吧</font>");
+		}else{
+		$("#nametip2").html("<font color=green >长度正确且可以注册！</font>");
+		}
 		});
-		//
 		}
 		});
 	$("#password").blur(function(){
@@ -47,9 +46,11 @@ $(document).ready(function(){
 	    if(pwd!=pwd2){
 	    $("#pwd2tip").html("<font color=red >&#10006两次密码不一致，请重新输入！</font>");
 		return flase;
+		}else if(pwd2.length<=4){
+		$("#pwd2tip").html("<font color=red >&#10006密码太短了！</font>");
+		return false;
 		}else{
 		$("#pwd2tip").html("<font color=green >&#10003</font>");
-		return true;
 		}
 	});
 });
@@ -112,9 +113,10 @@ $('#password').hideShowPassword({
 <form role="form" id="regForm" method="get" action="/reg">
 <fieldset>
   <div class="form-group">
-    <label for="name">用户名称</label>
+    <label for="username">用户名称</label>
     <input type="text" class="form-control" name="username" id="username" placeholder="请输入注册用户名" required>
-     <label for="name" id="nametip">*</label> 
+     <label for="username" id="nametip">*</label> 
+     <label for="username" id="nametip2"></label> 
   </div>
    <div class="form-group">
     <label for="password">密码</label>
@@ -126,7 +128,7 @@ $('#password').hideShowPassword({
     <input type="password" class="form-control" name="password2" id="password2" placeholder="请输入用户密码" required>
     <label for="password2" id="pwd2tip">*</label>
   </div>
-    <button id="sub" type="submit" class="submit btn btn-info">注册用户</button>
+    <button id="sub" type="submit" class="submit btn btn-primary">注册用户</button>
     <button type="reset" class="btn btn-info">清除信息</button>
  </fieldset>   
 </form> 
