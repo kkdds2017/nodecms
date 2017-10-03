@@ -2,10 +2,14 @@ var express = require('express');
 var User = require('../models/users')
 var router = express.Router();
 var md5=require("md5");
+var myDate = new Date();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { 
+	  title: 'Express' ,
+	  year: myDate.getFullYear()//2017
+		  });
 });
 //reg 注册信息处理逻辑
 
