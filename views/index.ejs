@@ -1,14 +1,4 @@
-<!DOCTYPE html>	
-<html>
-  <head>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
-    <title>Nojs轻量级cms中文网</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-<script src="/js/form-valid.js"></script>
+<% include header.ejs %>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#username").blur(function(){
@@ -55,7 +45,6 @@ $(document).ready(function(){
 	});
 });
 </script>
-<script src="https://cdn.bootcss.com/hideshowpassword/2.1.1/hideShowPassword.min.js"></script>
 <script>
 
 // Example 1
@@ -68,40 +57,6 @@ $('#password').hideShowPassword({
 });
 <!--password 可见-->
 </script>
- </head>
-  <body>
-  <!--
- 这个导航我其实不喜欢，但是没办法，项目组长的媳妇喜欢|fuck
- -->
- <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">NodeJs中文自学教程网</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">基本语法</a></li>
-            <li><a href="#">安装使用</a></li>
-             <li><a href="#">发展历程</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    NodeJs好基友
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">npm模块安装</a></li>
-                    <li><a href="#">Express框架语言</a></li>
-                    <li><a href="#">JADE模板语言</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Monogodb数据库</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">其他的中间件</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    </div>
-</nav>
 <div class="container">
 <div class="row" >
 <div class="col-xs-6 col-md-offset-3">
@@ -141,9 +96,5 @@ $('#password').hideShowPassword({
 </div>
 <!--容器的边界--> 
 </div>
-<hr>
-<footer>
- <p style="text-align:center;">版权所有，翻录必究&copy; 坤坤大神好基友学习网 2017</p>
- </footer>
-  </body>
-</html>
+
+<% include footer.ejs %>
