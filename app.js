@@ -8,10 +8,28 @@ var mongoose = require('mongoose')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+
 var User = require('./models/users');
+var login = require('./routes/login');
 
 var app = express();
 mongoose.Promise = global.Promise;  
+var session = require('express-session');
+var FileStore = require('session-file-store')(session);
+ 
+var identityKey = 'skey';
+ 
+app.use(session({
+  name: identityKey,
+  secret: 'kevin lee', // 用来对session id相关的cookie进行签名
+  store: new FileStore(), // 本地存储session（文本文件，也可以选择其他store，比如redis的）
+  saveUninitialized: false, // 是否自动保存未初始化的会话，建议false
+  resave: false, // 是否每次都重新保存会话，建议false
+  cookie: {
+    maxAge: 10 * 1000 // 有效期，单位是毫秒
+  }
+}));
+
 //你妹的，新版本mongoose非得家这玩意
 //远程数据库;
 mongoose.connect('mongodb://root:UIrbWa9cvF3PK3gSI4qjbhZhU52zeUDSuQI4Oc73@ermkmolebuhn.mongodb.sae.sina.com.cn:10479',{useMongoClient: true});
@@ -32,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/login',login);
 
 //查询用户是否注册，注册验证
 app.get("/find", function(req, res, usr) {

@@ -1,0 +1,33 @@
+<% include header.ejs %>
+<!--Your code here!-->
+<div class="container">
+<div class="row" >
+<div class="col-xs-6 col-md-offset-3">
+<div class="panel panel-success">
+<div class="panel-heading">
+ <h3 class="panel-title">用户登录</h3>
+</div>
+ <div class="panel-body">
+ <form role="form" id="signinForm" class="form-signin" action="/login/process_login" method="get">
+        <h2 class="form-signin-heading">请登录账户</h2>
+        <label for="inputName" class="sr-only">User name</label>
+        <input type="text" id="inputName" name="inputName" class="form-control" placeholder="User name" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> 记住我
+            <a href="/">没有账户，注册一个账户</a>
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+ </form>
+ </div>
+</div>
+<!--居中对其-->
+</div>
+<!--Row的边界-->
+</div>
+<!--容器的边界--> 
+</div>
+<% include footer.ejs %>
